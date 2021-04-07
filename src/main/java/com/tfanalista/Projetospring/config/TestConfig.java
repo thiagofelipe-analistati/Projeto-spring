@@ -58,6 +58,15 @@ public class TestConfig implements CommandLineRunner{
 			Produto p5 = new Produto(null, "Rails for Dummies", "Cras fringilla convallis sem vel faucibus.", 100.99, "");
 			
 			produtoRepository.saveAll(Arrays.asList(p1,p2,p3,p4,p5));
+			
+			p1.getCategorias().add(cat3);
+			p2.getCategorias().add(cat3);
+			p2.getCategorias().add(cat1);
+			p4.getCategorias().add(cat3);
+			p5.getCategorias().add(cat2);
+			
+			produtoRepository.saveAll(Arrays.asList(p1,p2,p3,p4,p5));
+			
 	}
 	
 	
