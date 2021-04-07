@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.tfanalista.Projetospring.entidades.enuns.StatusPedidos;
 
 @Entity
 public class Pedido implements Serializable {
@@ -24,6 +25,8 @@ public class Pedido implements Serializable {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'z'" , timezone = "GMT")
 	private Instant moment;
 	
+	private Integer status;
+	
 	//associação JPA para chave estrangeira com a tabela usuário
 	@ManyToOne
 	@JoinColumn(name = "cliente_id")
@@ -32,11 +35,12 @@ public class Pedido implements Serializable {
 	public Pedido() {
 	
 	}
-	public Pedido(Long id, Instant moment, Usuario cliente) {
+	public Pedido(Long id, Instant moment, Usuario cliente, StatusPedidos status) {
 		super();
 		this.id = id;
 		this.moment = moment;
 		this.cliente = cliente;
+		setStatus(status);
 	}
 
 	public Long getId() {
@@ -62,7 +66,16 @@ public class Pedido implements Serializable {
 	public void setCliente(Usuario cliente) {
 		this.cliente = cliente;
 	}
+	
 
+	public StatusPedidos getStatus() {
+		return StatusPedidos.valorOF(status);
+	}
+	public void setStatus(StatusPedidos status) {
+		if(status != null) {
+		this.status = status.getCode();
+		}
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
