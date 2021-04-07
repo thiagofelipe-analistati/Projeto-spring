@@ -10,10 +10,12 @@ import org.springframework.context.annotation.Profile;
 
 import com.tfanalista.Projetospring.entidades.Categoria;
 import com.tfanalista.Projetospring.entidades.Pedido;
+import com.tfanalista.Projetospring.entidades.Produto;
 import com.tfanalista.Projetospring.entidades.Usuario;
 import com.tfanalista.Projetospring.entidades.enuns.StatusPedidos;
 import com.tfanalista.Projetospring.repositories.CategoriaRepository;
 import com.tfanalista.Projetospring.repositories.PedidoRepository;
+import com.tfanalista.Projetospring.repositories.ProdutoRepository;
 import com.tfanalista.Projetospring.repositories.UsuarioRepository;
 
 @Configuration
@@ -27,6 +29,9 @@ public class TestConfig implements CommandLineRunner{
 	private PedidoRepository pedidorepository;
 	@Autowired
 	private CategoriaRepository categoriaRepostiry;
+	@Autowired
+	private ProdutoRepository produtoRepository;
+	
 	
 	
 	// metodo para instanciar os objetos.
@@ -45,6 +50,14 @@ public class TestConfig implements CommandLineRunner{
 			Categoria cat2 = new Categoria(null, "Books");
 			Categoria cat3 = new Categoria(null, "Computers");
 			categoriaRepostiry.saveAll(Arrays.asList(cat1,cat2,cat3));
+			
+			Produto p1 = new Produto(null, "Notebook asus", "8g ram, processador i7, tela 15,6", 90.5, "");
+			Produto p2 = new Produto(null, "Smart TV", "Nulla eu imperdiet purus. Maecenas ante.", 2190.0, "");
+			Produto p3 = new Produto(null, "Macbook Pro", "Nam eleifend maximus tortor, at mollis.", 1250.0, "");
+			Produto p4 = new Produto(null, "PC Gamer", "Donec aliquet odio ac rhoncus cursus.", 1200.0, "");
+			Produto p5 = new Produto(null, "Rails for Dummies", "Cras fringilla convallis sem vel faucibus.", 100.99, "");
+			
+			produtoRepository.saveAll(Arrays.asList(p1,p2,p3,p4,p5));
 	}
 	
 	
