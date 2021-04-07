@@ -8,9 +8,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import com.tfanalista.Projetospring.entidades.Categoria;
 import com.tfanalista.Projetospring.entidades.Pedido;
 import com.tfanalista.Projetospring.entidades.Usuario;
 import com.tfanalista.Projetospring.entidades.enuns.StatusPedidos;
+import com.tfanalista.Projetospring.repositories.CategoriaRepository;
 import com.tfanalista.Projetospring.repositories.PedidoRepository;
 import com.tfanalista.Projetospring.repositories.UsuarioRepository;
 
@@ -23,6 +25,10 @@ public class TestConfig implements CommandLineRunner{
 	private UsuarioRepository userrepository;
 	@Autowired
 	private PedidoRepository pedidorepository;
+	@Autowired
+	private CategoriaRepository categoriaRepostiry;
+	
+	
 	// metodo para instanciar os objetos.
 	@Override
 	public void run(String... args) throws Exception {
@@ -34,6 +40,11 @@ public class TestConfig implements CommandLineRunner{
 		Pedido o3 = new Pedido(null, Instant.parse("2019-07-22T15:21:22Z"), u1, StatusPedidos.PAGO);
 		userrepository.saveAll(Arrays.asList(u1,u2));
 		pedidorepository.saveAll(Arrays.asList(o1,o2,o3));
+		
+			Categoria cat1 = new Categoria(null, "Electronics");
+			Categoria cat2 = new Categoria(null, "Books");
+			Categoria cat3 = new Categoria(null, "Computers");
+			categoriaRepostiry.saveAll(Arrays.asList(cat1,cat2,cat3));
 	}
 	
 	
