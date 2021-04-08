@@ -36,6 +36,7 @@ public class ItensPedido {
 	public void setPedido(Pedido pedido) {
 		id.setPedido(pedido);
 	}
+	@JsonIgnore
 	public Produto getProduto() {
 		return id.getProduto();
 	}
