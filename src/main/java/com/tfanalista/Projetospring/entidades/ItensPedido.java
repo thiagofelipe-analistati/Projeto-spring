@@ -22,7 +22,7 @@ public class ItensPedido {
 	}
 	
 	public ItensPedido(Pedido pedido, Produto produto, Integer quantidade, Double preco) {
-		super();
+
 		id.setPedido(pedido);
 		id.setProduto(produto);
 		this.quantidade = quantidade;
@@ -91,6 +91,7 @@ public class ItensPedido {
 	public String toString() {
 		return "ItensPedido [id=" + id + ", quantidade=" + quantidade + ", preco=" + preco + "]";
 	}
+
 	
 	
 	

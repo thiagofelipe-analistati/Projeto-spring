@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Profile;
 
 import com.tfanalista.Projetospring.entidades.Categoria;
 import com.tfanalista.Projetospring.entidades.ItensPedido;
+import com.tfanalista.Projetospring.entidades.Pagamento;
 import com.tfanalista.Projetospring.entidades.Pedido;
 import com.tfanalista.Projetospring.entidades.Produto;
 import com.tfanalista.Projetospring.entidades.Usuario;
@@ -76,8 +77,16 @@ public class TestConfig implements CommandLineRunner{
 			ItensPedido oi2 = new ItensPedido(o1, p3, 1, p3.getPreco());
 			ItensPedido oi3 = new ItensPedido(o2, p3, 2, p3.getPreco());
 			ItensPedido oi4 = new ItensPedido(o3, p5, 2, p5.getPreco());
+			ItensPedido oi5 = new ItensPedido(o1, p1, 3, p1.getPreco());
 			
-			itensPedidoRepository.saveAll(Arrays.asList(oi1,oi2,oi3,oi4));
+			itensPedidoRepository.saveAll(Arrays.asList(oi1,oi2,oi3,oi4, oi5));
+			
+			Pagamento pag1 = new Pagamento(null, Instant.parse("2019-07-22T21:21:22Z"), o3);
+			
+			o3.setPagamento(pag1);
+			
+			pedidorepository.save(o3);
+			
 			
 	}
 	
