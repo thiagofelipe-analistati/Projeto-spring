@@ -9,11 +9,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 import com.tfanalista.Projetospring.entidades.Categoria;
+import com.tfanalista.Projetospring.entidades.ItensPedido;
 import com.tfanalista.Projetospring.entidades.Pedido;
 import com.tfanalista.Projetospring.entidades.Produto;
 import com.tfanalista.Projetospring.entidades.Usuario;
 import com.tfanalista.Projetospring.entidades.enuns.StatusPedidos;
 import com.tfanalista.Projetospring.repositories.CategoriaRepository;
+import com.tfanalista.Projetospring.repositories.ItensPedidoRepository;
 import com.tfanalista.Projetospring.repositories.PedidoRepository;
 import com.tfanalista.Projetospring.repositories.ProdutoRepository;
 import com.tfanalista.Projetospring.repositories.UsuarioRepository;
@@ -31,7 +33,8 @@ public class TestConfig implements CommandLineRunner{
 	private CategoriaRepository categoriaRepostiry;
 	@Autowired
 	private ProdutoRepository produtoRepository;
-	
+	@Autowired
+	private ItensPedidoRepository itensPedidoRepository;
 	
 	
 	// metodo para instanciar os objetos.
@@ -66,6 +69,13 @@ public class TestConfig implements CommandLineRunner{
 			p5.getCategorias().add(cat2);
 			
 			produtoRepository.saveAll(Arrays.asList(p1,p2,p3,p4,p5));
+			
+			ItensPedido oi1 = new ItensPedido(o1, p1, 2, p1.getPreco());
+			ItensPedido oi2 = new ItensPedido(o1, p3, 1, p3.getPreco());
+			ItensPedido oi3 = new ItensPedido(o2, p3, 2, p3.getPreco());
+			ItensPedido oi4 = new ItensPedido(o3, p5, 2, p5.getPreco());
+			
+			itensPedidoRepository.saveAll(Arrays.asList(oi1,oi2,oi3,oi4));
 			
 	}
 	
