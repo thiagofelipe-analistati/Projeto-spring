@@ -16,7 +16,7 @@ import com.tfanalista.Projetospring.service.PedidoService;
 
 
 @RestController //implementação do rest 
-@RequestMapping (value = "/pedido")
+@RequestMapping (value = "/pedidos")
 public class PedidoResource {
 	
 	@Autowired

@@ -16,6 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tfanalista.Projetospring.entidades.enuns.StatusPedidos;
 
 @Entity
@@ -38,6 +39,7 @@ public class Pedido implements Serializable {
 	private Usuario cliente;
 
 	// coleção itens 
+	
 	@OneToMany(mappedBy = "id.pedido")
 	private Set<ItensPedido> itens = new HashSet<>();
 	
@@ -89,6 +91,7 @@ public class Pedido implements Serializable {
 		}
 	}
 	
+	@JsonIgnore
 	public Set<ItensPedido> getItens(){
 		return itens;
 	}
