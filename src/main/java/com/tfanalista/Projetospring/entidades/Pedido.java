@@ -91,7 +91,7 @@ public class Pedido implements Serializable {
 		}
 	}
 	
-	@JsonIgnore
+	
 	public Set<ItensPedido> getItens(){
 		return itens;
 	}
@@ -102,7 +102,17 @@ public class Pedido implements Serializable {
 	}
 	public void setPagamento(Pagamento pagamento) {
 		this.pagamento = pagamento;
+		
 	}
+	
+	public Double getTotal() {
+		double soma = 0;
+		for (ItensPedido x: itens) {
+			soma += x.getSubTotal();
+		}
+		return soma;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
