@@ -3,6 +3,8 @@ package com.tfanalista.Projetospring.service;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -48,9 +50,14 @@ public class UsuarioService {
 		
 	}
 	public Usuario Update(Long id, Usuario obj) {
-		Usuario entidade = userRepository.getOne(id);
-		UpdateData(entidade, obj);
-		return userRepository.save(entidade);
+		try{
+			Usuario entidade = userRepository.getOne(id);
+			UpdateData(entidade, obj);
+			return userRepository.save(entidade);
+		} catch (EntityNotFoundException e) {
+			
+			throw new ResourceNotFoundException(id);
+		}
 	}
 	private void UpdateData(Usuario entidade, Usuario obj) {
 		entidade.setNome(obj.getNome());
