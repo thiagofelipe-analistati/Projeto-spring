@@ -21,6 +21,7 @@ import com.tfanalista.Projetospring.service.UsuarioService;
 
 
 
+
 @RestController //implementação do rest 
 @RequestMapping (value = "/usuarios")
 public class UsuarioResource {

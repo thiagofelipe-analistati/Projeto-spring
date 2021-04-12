@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.tfanalista.Projetospring.entidades.Usuario;
 import com.tfanalista.Projetospring.repositories.UsuarioRepository;
+import com.tfanalista.Projetospring.service.exception.ResourceNotFoundException;
+
 
 @Service//registrando como componente do frame spring
 public class UsuarioService {
@@ -24,7 +26,7 @@ public class UsuarioService {
 	public Usuario findById(Long id) {
 		
 		Optional<Usuario> obj = userRepository.findById(id);
-		return obj.get();
+		return obj.orElseThrow(() -> new ResourceNotFoundException(id));
 		
 	}
 
