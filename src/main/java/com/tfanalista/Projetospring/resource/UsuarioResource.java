@@ -46,10 +46,13 @@ public class UsuarioResource {
 				.buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).body(obj);
 	}
+<<<<<<< HEAD
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Void> delete(@PathVariable Long id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
+=======
+>>>>>>> fed37f78c12784a46f97ba3ba3052f6c4857dee4
 	
 }
