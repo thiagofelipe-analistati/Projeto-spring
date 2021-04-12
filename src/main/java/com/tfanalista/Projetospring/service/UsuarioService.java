@@ -31,11 +31,19 @@ public class UsuarioService {
 	public Usuario Insert(Usuario obj) {
 		return userRepository.save(obj);
 	}
-<<<<<<< HEAD
-	
+
 	public void delete(Long id) {
 		userRepository.deleteById(id);
 	}
-=======
->>>>>>> fed37f78c12784a46f97ba3ba3052f6c4857dee4
+	public Usuario Update(Long id, Usuario obj) {
+		Usuario entidade = userRepository.getOne(id);
+		UpdateData(entidade, obj);
+		return userRepository.save(entidade);
+	}
+	private void UpdateData(Usuario entidade, Usuario obj) {
+		entidade.setNome(obj.getNome());
+		entidade.setEmail(obj.getEmail());
+		entidade.setTelefone(obj.getTelefone());
+	}
+			
 }
